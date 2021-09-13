@@ -26,26 +26,23 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpg|svg|gif)$/i,
+        dependency: { not: ['url'] },
         use: [
           {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'assets/[hash].[ext]',
             },
           },
         ],
+        type: 'javascript/auto',
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader, 'css-loader',
         ],
-      },
-      {
-        test: /\.svg$/,
-        type: 'asset/resource',
       },
     ],
   },
